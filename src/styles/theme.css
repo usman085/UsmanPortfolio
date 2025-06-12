@@ -1,0 +1,62 @@
+:root {
+  /* Light theme */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --secondary: #00eaff;
+  --background: #ffffff;
+  --text: #1f2937;
+  --text-light: #6b7280;
+  --card-bg: #f3f4f6;
+  --border: #e5e7eb;
+}
+
+[data-theme='dark'] {
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --secondary: #00eaff;
+  --background: #111827;
+  --text: #f3f4f6;
+  --text-light: #9ca3af;
+  --card-bg: #1f2937;
+  --border: #374151;
+}
+
+/* Custom utility classes */
+.text-neon {
+  color: var(--secondary);
+}
+
+.bg-gradient-tech {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+}
+
+.shadow-neon {
+  box-shadow: 0 0 16px var(--secondary);
+}
+
+/* Animation classes */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+} 

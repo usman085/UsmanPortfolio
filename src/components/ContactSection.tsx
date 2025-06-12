@@ -1,0 +1,163 @@
+"use client";
+
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from 'yup';
+import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import type { IconType } from 'react-icons';
+import { socialLinks } from '../utils/data';
+import { useState } from 'react';
+
+const schema = yup.object({
+  name: yup.string().required('Name is required'),
+  email: yup.string().email('Invalid email').required('Email is required'),
+  message: yup.string().required('Message is required'),
+}).required();
+
+type FormData = yup.InferType<typeof schema>;
+
+export default function ContactSection() {
+  const [isSuccess, setIsSuccess] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    reset,
+  } = useForm<FormData>({
+    resolver: yupResolver(schema),
+  });
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      // Here you would typically send the form data to your backend
+      console.log(data);
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      setIsSuccess(true);
+      reset();
+      // Reset success message after 3 seconds
+      setTimeout(() => setIsSuccess(false), 3000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+    }
+  };
+
+  return (
+    <section id="contact" className="section bg-background">
+      <div className="container">
+        <h2 className="heading-2 text-center mb-12 animate-fade-in">
+          Get In Touch
+        </h2>
+
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
+          <div className="animate-slide-in-left">
+            <h3 className="heading-3 mb-4">Let's Connect</h3>
+            <p className="paragraph mb-8">
+              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            </p>
+
+            <div className="space-y-4">
+              {socialLinks.map((link) => {
+                const Icon = {
+                  FaLinkedin,
+                  FaGithub,
+                  FaTwitter,
+                }[link.icon] as IconType;
+
+                return (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center space-x-3 text-text hover:text-primary transition-all hover:translate-x-1"
+                  >
+                    <Icon className="text-xl" />
+                    <span>{link.name}</span>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          <form
+            onSubmit={handleSubmit(onSubmit)}
+            className="space-y-6 animate-slide-in-right card"
+          >
+            {isSuccess && (
+              <div className="bg-green-500/10 text-green-500 p-4 rounded-lg animate-fade-in">
+                Message sent successfully! I'll get back to you soon.
+              </div>
+            )}
+
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium mb-2">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                {...register('name')}
+                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                disabled={isSubmitting}
+              />
+              {errors.name && (
+                <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium mb-2">
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                {...register('email')}
+                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                disabled={isSubmitting}
+              />
+              {errors.email && (
+                <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="message" className="block text-sm font-medium mb-2">
+                Message
+              </label>
+              <textarea
+                id="message"
+                rows={4}
+                {...register('message')}
+                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                disabled={isSubmitting}
+              />
+              {errors.message && (
+                <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+              )}
+            </div>
+
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="btn btn-primary w-full py-3 font-semibold shadow-lg hover:shadow-neon transition-all hover:scale-105 active:scale-95 disabled:opacity-50 relative"
+            >
+              {isSubmitting ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                'Send Message'
+              )}
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+} 
