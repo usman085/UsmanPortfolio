@@ -1,163 +1,169 @@
 "use client";
 
 import { useState, useEffect } from 'react';
-import { FaMoon, FaSun, FaBars, FaTimes } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi';
 
-const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Contact', href: '#contact' },
-];
-
-export default function Navbar() {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    }
-
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 0);
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const stored = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = stored || (prefersDark ? 'dark' : 'light');
+    setTheme(initialTheme as 'light' | 'dark');
+  }, []);
+
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
+    document.documentElement.classList.toggle('dark', newTheme === 'dark');
     document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   };
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
+      setIsOpen(false);
     }
   };
 
   return (
     <motion.header
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-background/80 backdrop-blur-lg shadow-lg'
+      className={`fixed top-0 left-0 right-0 z-50 h-20 transition-all duration-300 border-b-2 border-white/20 ${
+        isScrolled 
+          ? 'bg-background/90 backdrop-blur-lg shadow-sm' 
           : 'bg-transparent'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+      <div className="container mx-auto px-4 h-full">
+        <div className="flex items-center justify-between h-full">
           <motion.div
-            className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+            className="text-2xl font-bold cursor-pointer"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            onClick={() => scrollToSection('home')}
           >
-            Usman
+            <span className="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+              Usman
+            </span>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {['home', 'about', 'projects', 'contact'].map((item) => (
               <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                className="text-text hover:text-primary transition-colors relative group"
+                key={item}
+                className="text-foreground hover:text-primary transition-colors relative group font-medium"
                 whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection(item)}
               >
-                {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover:w-full" />
               </motion.button>
             ))}
-            <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-full hover:bg-primary/10 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {theme === 'light' ? (
-                <FaMoon className="text-xl text-primary" />
-              ) : (
-                <FaSun className="text-xl text-primary" />
-              )}
-            </motion.button>
+            <div className="flex items-center space-x-4">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => scrollToSection('contact')}
+                className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-6 py-2 rounded-full transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:shadow-primary/20"
+              >
+                Let's Discuss Project
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 15 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleTheme}
+                className="p-2 rounded-full bg-background/80 hover:bg-background shadow-sm hover:shadow-md transition-all duration-200 border border-border/50"
+              >
+                {theme === 'light' ? (
+                  <FiMoon className="w-5 h-5 text-foreground" />
+                ) : (
+                  <FiSun className="w-5 h-5 text-foreground" />
+                )}
+              </motion.button>
+            </div>
           </nav>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="md:hidden p-2 rounded-lg hover:bg-primary/10 transition-colors"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg bg-background/80 hover:bg-background shadow-sm hover:shadow-md transition-all duration-200 border border-border/50"
             whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(!isOpen)}
           >
-            {isMobileMenuOpen ? (
-              <FaTimes className="text-xl text-primary" />
+            {isOpen ? (
+              <FiX className="w-6 h-6 text-foreground" />
             ) : (
-              <FaBars className="text-xl text-primary" />
+              <FiMenu className="w-6 h-6 text-foreground" />
             )}
           </motion.button>
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="container mx-auto px-4 py-4">
-              <nav className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <motion.button
-                    key={item.name}
-                    onClick={() => scrollToSection(item.href)}
-                    className="text-text hover:text-primary transition-colors py-2"
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.name}
-                  </motion.button>
-                ))}
-                <motion.button
-                  onClick={toggleTheme}
-                  className="flex items-center space-x-2 text-text hover:text-primary transition-colors py-2"
-                  whileHover={{ x: 10 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {theme === 'light' ? (
-                    <>
-                      <FaMoon className="text-xl" />
-                      <span>Dark Mode</span>
-                    </>
-                  ) : (
-                    <>
-                      <FaSun className="text-xl" />
-                      <span>Light Mode</span>
-                    </>
-                  )}
-                </motion.button>
-              </nav>
+      <motion.div
+        className="md:hidden absolute top-20 left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border/50 shadow-lg"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: isOpen ? 1 : 0, y: isOpen ? 0 : -20 }}
+        transition={{ duration: 0.2 }}
+        style={{ display: isOpen ? 'block' : 'none' }}
+      >
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex flex-col space-y-4">
+            {['home', 'about', 'projects', 'contact'].map((item) => (
+              <motion.button
+                key={item}
+                className="text-foreground hover:text-primary transition-colors text-left px-4 py-2 rounded-lg hover:bg-background/80 font-medium"
+                whileHover={{ scale: 1.02 }}
+                onClick={() => scrollToSection(item)}
+              >
+                {item.charAt(0).toUpperCase() + item.slice(1)}
+              </motion.button>
+            ))}
+            <div className="flex items-center space-x-4 mt-2">
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                onClick={() => scrollToSection('contact')}
+                className="flex-1 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:shadow-primary/20"
+              >
+                Let's Discuss Project
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1, rotate: 15 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={toggleTheme}
+                className="p-2 rounded-lg bg-background/80 hover:bg-background shadow-sm hover:shadow-md transition-all duration-200 border border-border/50"
+              >
+                {theme === 'light' ? (
+                  <FiMoon className="w-5 h-5 text-foreground" />
+                ) : (
+                  <FiSun className="w-5 h-5 text-foreground" />
+                )}
+              </motion.button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      </motion.div>
     </motion.header>
   );
-} 
+};
+
+export default Navbar; 

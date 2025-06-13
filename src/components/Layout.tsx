@@ -13,10 +13,10 @@ interface LayoutProps {
 export default function Layout({ children }: LayoutProps) {
   return (
     <LoadingWrapper>
-      <div className="min-h-screen bg-background text-text transition-colors duration-300">
+      <div className="min-h-screen w-full bg-background text-text transition-colors duration-300 overflow-hidden">
         <AnimatedBackground />
         <Navbar />
-        <main className="pt-16">
+        <main className="pt-16 w-full overflow-hidden">
           <div className="animated-gradient absolute inset-0 -z-10 opacity-10" />
           {children}
         </main>

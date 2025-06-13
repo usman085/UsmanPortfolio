@@ -1,11 +1,5 @@
-import type { Metadata } from 'next';
 import './globals.css';
 import Layout from '@/components/Layout';
-
-export const metadata: Metadata = {
-  title: 'Usman - Portfolio',
-  description: 'Full Stack Developer Portfolio',
-};
 
 export default function RootLayout({
   children,
@@ -13,18 +7,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
                 try {
-                  // Set theme
                   const stored = localStorage.getItem('theme');
-                  if (stored) {
-                    document.documentElement.setAttribute('data-theme', stored);
-                  }
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  const theme = stored || (prefersDark ? 'dark' : 'light');
+                  document.documentElement.classList.toggle('dark', theme === 'dark');
+                  document.documentElement.setAttribute('data-theme', theme);
                 } catch (e) {}
               })();
             `,

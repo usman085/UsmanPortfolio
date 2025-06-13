@@ -1,148 +1,56 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
 import Image from 'next/image';
-import AnimatedContent from './AnimatedContent';
-import { FaPlay, FaCode, FaEnvelope } from 'react-icons/fa';
+import AnimatedText from './AnimatedText';
 
 export default function HeroSection() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    // Set loaded state after a small delay to ensure smooth transition
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleWatchClick = () => {
-    // Add your video URL or modal trigger here
-    window.open('https://www.youtube.com/watch?v=YOUR_VIDEO_ID', '_blank');
-  };
-
   return (
-    <section id="home" className="section min-h-screen flex items-center relative overflow-hidden">
-      {/* Background with gradient and pattern */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/95 to-primary/20" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:14px_24px]" />
+    <section
+      id="home"
+      className="min-h-[calc(100vh-60px)] w-full flex items-center relative overflow-hidden bg-gradient-to-br from-background via-background/95 to-primary/10"
+    >
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10 py-24">
+        {/* Text Content */}
+        <div className="flex-1 text-center lg:text-left">
+          <AnimatedText
+            lines={[
+              "An affordable way to launch your product idea",
+              "Bringing your app, website or SaaS to life",
+              "Solving UX problems to drive increased revenue",
+            ]}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight"
+          />
+          <p className="text-text-light text-lg md:text-xl mb-8 max-w-2xl mx-auto lg:mx-0">
+            I help businesses and startups create beautiful, functional digital products that users love.
+          </p>
+          <a
+            href="#contact"
+            className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 inline-block"
+          >
+            Let's Work Together
+          </a>
+        </div>
+
+        {/* Profile Image */}
+        <div className="flex-1 relative w-full max-w-lg aspect-square">
+          <Image
+            src="/images/profile.png"
+            alt="Usman"
+            fill
+            className="object-contain object-center opacity-90 hover:opacity-100 transition-all duration-500 mix-blend-soft-light"
+            priority
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
+          {/* Decorative elements */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full blur-3xl -z-10" />
+          <div className="absolute inset-0 border border-border/30 rounded-full shadow-lg" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-full" />
+        </div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          <AnimatedContent 
-            direction="left" 
-            delay={isLoaded ? 0.2 : 0}
-            distance={150}
-            className="flex-1 text-center md:text-left"
-          >
-            <div>
-              <AnimatedContent direction="fade" delay={isLoaded ? 0.4 : 0}>
-                <h1 className="heading-1 mb-4">
-                  Hi, I'm Usman
-                  <br />
-                  <span className="text-primary">Full Stack Developer</span>
-                </h1>
-              </AnimatedContent>
-              
-              <AnimatedContent direction="fade" delay={isLoaded ? 0.6 : 0}>
-                <p className="paragraph mb-8 max-w-2xl">
-                  I specialize in building exceptional digital experiences. Currently, I'm focused on
-                  building accessible, human-centered products.
-                </p>
-              </AnimatedContent>
-
-              <AnimatedContent direction="up" delay={isLoaded ? 0.8 : 0} distance={50}>
-                <div className="flex flex-wrap gap-4 justify-center md:justify-start">
-                  <motion.button
-                    onClick={handleWatchClick}
-                    className="btn-primary flex items-center gap-2 group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaPlay className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                    Watch Demo
-                  </motion.button>
-                  <motion.a
-                    href="#projects"
-                    className="btn-secondary flex items-center gap-2 group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaCode className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                    View Projects
-                  </motion.a>
-                  <motion.a
-                    href="#contact"
-                    className="btn-secondary flex items-center gap-2 group"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <FaEnvelope className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                    Contact Me
-                  </motion.a>
-                </div>
-              </AnimatedContent>
-            </div>
-          </AnimatedContent>
-
-          <AnimatedContent 
-            direction="right" 
-            delay={isLoaded ? 0.4 : 0}
-            distance={150}
-            className="flex-1 flex justify-center"
-          >
-            <motion.div 
-              className="relative w-64 h-64 md:w-80 md:h-80"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: isLoaded ? 1 : 0, scale: isLoaded ? 1 : 0.8 }}
-              viewport={{ once: false }}
-              transition={{ duration: 0.5, delay: isLoaded ? 0.6 : 0 }}
-            >
-              <motion.div
-                className="absolute inset-0 rounded-full overflow-hidden border-4 border-primary/20"
-                animate={{
-                  boxShadow: [
-                    "0 0 0 0 rgba(var(--primary-rgb), 0.2)",
-                    "0 0 20px 10px rgba(var(--primary-rgb), 0.2)",
-                    "0 0 0 0 rgba(var(--primary-rgb), 0.2)"
-                  ]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Image
-                  src="/images/profile.jpeg"
-                  alt="Usman"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </motion.div>
-              <motion.div
-                className="absolute inset-0 rounded-full"
-                style={{
-                  background: "radial-gradient(circle at center, transparent 60%, rgba(var(--primary-rgb), 0.1) 100%)"
-                }}
-                animate={{
-                  opacity: [0.5, 0.8, 0.5]
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              />
-            </motion.div>
-          </AnimatedContent>
-        </div>
+      {/* Bottom Banner */}
+      <div className="w-full fixed bottom-0 left-0 bg-gradient-to-r from-primary to-primary-dark text-white text-center py-2 text-sm font-medium shadow-lg z-50">
+        Accepting new project opportunities
       </div>
     </section>
   );

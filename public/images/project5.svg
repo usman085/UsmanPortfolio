@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800px" height="600px" viewBox="0 0 800 600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#F3F4F6" x="0" y="0" width="800" height="600"/>
+        <g transform="translate(150, 100)">
+            <!-- Chart Background -->
+            <rect x="0" y="0" width="500" height="300" fill="#FFFFFF" stroke="#E5E7EB" stroke-width="2"/>
+            
+            <!-- Chart Lines -->
+            <path d="M0,250 L100,200 L200,220 L300,150 L400,180 L500,100" 
+                  stroke="#3B82F6" stroke-width="3" fill="none"/>
+            
+            <!-- Bitcoin Symbol -->
+            <circle cx="100" cy="200" r="30" fill="#F59E0B" stroke="#D97706" stroke-width="2"/>
+            <text x="100" y="205" font-family="Arial" font-size="24" fill="#FFFFFF" text-anchor="middle">₿</text>
+            
+            <!-- Ethereum Symbol -->
+            <circle cx="300" cy="150" r="30" fill="#6366F1" stroke="#4F46E5" stroke-width="2"/>
+            <text x="300" y="155" font-family="Arial" font-size="24" fill="#FFFFFF" text-anchor="middle">Ξ</text>
+            
+            <!-- Price Points -->
+            <circle cx="100" cy="200" r="5" fill="#3B82F6"/>
+            <circle cx="200" cy="220" r="5" fill="#3B82F6"/>
+            <circle cx="300" cy="150" r="5" fill="#3B82F6"/>
+            <circle cx="400" cy="180" r="5" fill="#3B82F6"/>
+            <circle cx="500" cy="100" r="5" fill="#3B82F6"/>
+            
+            <!-- Grid Lines -->
+            <line x1="0" y1="100" x2="500" y2="100" stroke="#E5E7EB" stroke-width="1"/>
+            <line x1="0" y1="200" x2="500" y2="200" stroke="#E5E7EB" stroke-width="1"/>
+            <line x1="0" y1="300" x2="500" y2="300" stroke="#E5E7EB" stroke-width="1"/>
+        </g>
+    </g>
+</svg> 
