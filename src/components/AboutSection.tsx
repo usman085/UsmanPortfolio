@@ -1,16 +1,22 @@
-import { FaReact, FaNodeJs, FaPython, FaAws, FaDocker } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaLaravel, FaVuejs, FaDocker, FaPhp, FaGitAlt } from 'react-icons/fa';
+import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiMysql, SiJest, SiRedux, SiAmazon } from 'react-icons/si';
 import { motion } from 'framer-motion';
 
 const skills = [
   { name: 'React', icon: FaReact, color: '#61DAFB' },
-  { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
-  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
   { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
-  { name: 'Python', icon: FaPython, color: '#3776AB' },
-  { name: 'AWS', icon: FaAws, color: '#232F3E' },
+  { name: 'Node.js', icon: FaNodeJs, color: '#339933' },
+  { name: 'Laravel', icon: FaLaravel, color: '#FF2D20' },
+  { name: 'Vue.js', icon: FaVuejs, color: '#4FC08D' },
+  { name: 'TypeScript', icon: SiTypescript, color: '#3178C6' },
+  { name: 'PHP', icon: FaPhp, color: '#777BB4' },
+  { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+  { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
+  { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
   { name: 'Docker', icon: FaDocker, color: '#2496ED' },
-  { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+  { name: 'AWS', icon: SiAmazon, color: '#232F3E' },
+  { name: 'Redux', icon: SiRedux, color: '#764ABC' },
+  { name: 'Git', icon: FaGitAlt, color: '#F05032' },
 ];
 
 const containerVariants = {
@@ -44,112 +50,179 @@ export default function AboutSection() {
   return (
     <motion.section 
       id="about" 
-      className="section bg-card-bg rounded-xl my-8"
+      className="section bg-gradient-to-br from-background via-background/95 to-primary/10 rounded-xl my-8"
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
       variants={containerVariants}
     >
-      <div className="container">
+      <div className="container mx-auto px-4 py-20">
+        {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportConfig}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="heading-2 mb-4">About Me</h2>
-          <p className="paragraph max-w-3xl mx-auto">
-            I'm a passionate software engineer with over 6 years of experience in building
-            scalable web applications. I specialize in modern JavaScript frameworks and
-            cloud technologies, always striving to create efficient and user-friendly solutions.
-          </p>
+          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+            About Me
+          </h2>
+          <div className="max-w-3xl mx-auto space-y-6">
+            <p className="text-lg text-text-light leading-relaxed">
+              I am a Senior Full Stack Developer with extensive experience in designing and developing dynamic web applications. 
+              With a strong foundation in both frontend and backend technologies, I specialize in creating scalable, 
+              high-performance solutions that meet complex business requirements.
+            </p>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+          {/* Skills Section - Takes 4 columns */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportConfig}
             transition={{ duration: 0.6 }}
+            className="lg:col-span-4"
           >
-            <h3 className="heading-3 mb-6">My Skills</h3>
-            <motion.div 
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={viewportConfig}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-6"
-            >
-              {skills.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  variants={itemVariants}
-                  whileHover={{ 
-                    scale: 1.05,
-                    boxShadow: "0 0 15px rgba(0,0,0,0.2)",
-                    transition: { duration: 0.2 }
-                  }}
-                  className="flex flex-col items-center p-4 bg-background rounded-lg shadow-lg hover:shadow-neon transition-all duration-300"
-                >
-                  <skill.icon
-                    className="text-4xl mb-2 transform hover:rotate-12 transition-transform duration-300"
-                    style={{ color: skill.color }}
-                  />
-                  <span className="text-sm font-medium">{skill.name}</span>
-                </motion.div>
-              ))}
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={viewportConfig}
-            transition={{ duration: 0.6 }}
-            className="space-y-6"
-          >
-            <div>
-              <h3 className="heading-3 mb-4">Experience</h3>
+            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-primary/10">
+              <h3 className="text-2xl font-bold mb-8 text-primary">Core Competencies</h3>
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="space-y-4"
+                className="grid grid-cols-2 gap-6"
               >
+                {skills.map((skill, index) => (
+                  <motion.div
+                    key={skill.name}
+                    variants={itemVariants}
+                    whileHover={{ 
+                      scale: 1.05,
+                      boxShadow: "0 0 20px rgba(0,0,0,0.2)",
+                      transition: { duration: 0.2 }
+                    }}
+                    className="flex flex-col items-center p-4 bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                  >
+                    <skill.icon
+                      className="text-4xl mb-3 transform hover:rotate-12 transition-transform duration-300"
+                      style={{ color: skill.color }}
+                    />
+                    <span className="text-sm font-medium text-text-light">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Experience Section - Takes 8 columns */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={viewportConfig}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-8"
+          >
+            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-primary/10">
+              <h3 className="text-2xl font-bold mb-8 text-primary">Professional Experience</h3>
+              <motion.div 
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={viewportConfig}
+                className="space-y-6"
+              >
+                {/* Byteimpulse CTO */}
                 <motion.div 
                   variants={itemVariants}
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 0 15px rgba(0,0,0,0.1)",
-                    transition: { duration: 0.2 }
-                  }}
-                  className="card hover:bg-background/50 transition-colors duration-300"
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
-                  <h4 className="font-semibold text-lg mb-2">Senior Software Engineer</h4>
-                  <p className="text-text-light mb-2">Tech Company • 2020 - Present</p>
-                  <p className="text-sm">
-                    Leading development of enterprise-scale applications using React, Node.js,
-                    and cloud technologies. Mentoring junior developers and implementing
-                    best practices.
-                  </p>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Chief Technology Officer</h4>
+                      <p className="text-text-light">Byteimpulse</p>
+                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · Hybrid</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2024 - Present</span>
+                  </div>
                 </motion.div>
+
+                {/* Byteimpulse Lead */}
                 <motion.div 
                   variants={itemVariants}
-                  whileHover={{ 
-                    scale: 1.02,
-                    boxShadow: "0 0 15px rgba(0,0,0,0.1)",
-                    transition: { duration: 0.2 }
-                  }}
-                  className="card hover:bg-background/50 transition-colors duration-300"
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
-                  <h4 className="font-semibold text-lg mb-2">Software Engineer</h4>
-                  <p className="text-text-light mb-2">Startup • 2018 - 2020</p>
-                  <p className="text-sm">
-                    Developed and maintained multiple web applications using modern
-                    JavaScript frameworks and RESTful APIs.
-                  </p>
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Lead Software Engineer</h4>
+                      <p className="text-text-light">Byteimpulse</p>
+                      <p className="text-sm text-text-light mt-1">Remote</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">July 2023 - January 2024</span>
+                  </div>
+                </motion.div>
+
+                {/* Taro Technologies */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Senior Software Engineer</h4>
+                      <p className="text-text-light">Taro Technologies</p>
+                      <p className="text-sm text-text-light mt-1">Pakistan · On-site</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">April 2022 - March 2024</span>
+                  </div>
+                </motion.div>
+
+                {/* Geeklone Technologies */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Laravel/Vue.js/MERN Stack Developer</h4>
+                      <p className="text-text-light">Geeklone Technology</p>
+                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2021 - April 2022</span>
+                  </div>
+                </motion.div>
+
+                {/* Geek Tech Sol */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Laravel Developer</h4>
+                      <p className="text-text-light">Geek Tech Sol</p>
+                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2020 - December 2020</span>
+                  </div>
+                </motion.div>
+
+                {/* Tektiks Innovative */}
+                <motion.div 
+                  variants={itemVariants}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                >
+                  <div className="flex justify-between items-center">
+                    <div>
+                      <h4 className="text-xl font-bold text-primary mb-1">Web Developer</h4>
+                      <p className="text-text-light">Tektiks Innovative Network Pvt. Ltd.</p>
+                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                    </div>
+                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">September 2019 - December 2019</span>
+                  </div>
                 </motion.div>
               </motion.div>
             </div>

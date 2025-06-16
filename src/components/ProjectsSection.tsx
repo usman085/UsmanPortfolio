@@ -8,64 +8,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const workSamples = [
   {
-    title: 'E-commerce Platform Redesign',
-    description: 'Complete redesign of a major e-commerce platform, focusing on user experience and conversion optimization. Implemented modern UI patterns and improved mobile responsiveness.',
-    image: '/images/work1.svg',
-    category: 'UI/UX Design',
-    client: 'Fashion Retailer',
-    duration: '3 months',
-    impact: '40% increase in mobile conversions',
-    link: 'https://case-study-1.com'
-  },
-  {
-    title: 'Banking App Modernization',
-    description: 'Led the modernization of a legacy banking application, implementing new features and improving security. Enhanced user authentication and transaction processing.',
-    image: '/images/work2.svg',
-    category: 'Development',
-    client: 'Financial Institution',
-    duration: '6 months',
-    impact: '60% faster transaction processing',
-    link: 'https://case-study-2.com'
-  },
-  {
-    title: 'Healthcare Dashboard',
-    description: 'Developed a comprehensive healthcare analytics dashboard for patient monitoring and data visualization. Integrated with multiple healthcare systems and real-time data sources.',
-    image: '/images/work3.svg',
-    category: 'Data Visualization',
-    client: 'Healthcare Provider',
-    duration: '4 months',
-    impact: '30% reduction in data processing time',
-    link: 'https://case-study-3.com'
-  },
-  {
-    title: 'Educational Platform',
-    description: 'Created an interactive learning platform with real-time collaboration features. Implemented video conferencing, document sharing, and progress tracking.',
-    image: '/images/work4.svg',
+    title: 'QS Learning Platform',
+    description: 'Developed a comprehensive educational platform for QS Learning tuition center using Vue.js and Vuetify. Built a responsive and user-friendly interface with Laravel backend and MySQL database, creating an engaging learning environment for students.',
+    image: '/images/qslearning/image_original.png',
     category: 'Full Stack',
-    client: 'Education Tech',
-    duration: '5 months',
-    impact: '50% increase in student engagement',
-    link: 'https://case-study-4.com'
-  },
-  {
-    title: 'Logistics Management System',
-    description: 'Built a comprehensive logistics management system with route optimization and real-time tracking. Integrated with multiple shipping providers and GPS systems.',
-    image: '/images/work5.svg',
-    category: 'Backend Development',
-    client: 'Logistics Company',
-    duration: '8 months',
-    impact: '45% reduction in delivery time',
-    link: 'https://case-study-5.com'
-  },
-  {
-    title: 'Social Media Analytics',
-    description: 'Developed a social media analytics platform with AI-powered insights and automated reporting. Features include sentiment analysis and trend prediction.',
-    image: '/images/work6.svg',
-    category: 'AI/ML',
-    client: 'Marketing Agency',
+    client: 'QS Learning',
     duration: '4 months',
-    impact: '70% faster report generation',
-    link: 'https://case-study-6.com'
+    impact: 'Enhanced student learning experience',
+    link: 'https://case-study-qs.com'
+  },
+  {
+    title: 'Taro Fintech Platform',
+    description: 'Developed a comprehensive fintech web application with seamless payment gateway integration. Built responsive UI with React.js and Material UI, implemented backend logic using Node.js and Express, and managed data with MySQL.',
+    image: '/images/taro/image_original.png',
+    category: 'Full Stack',
+    client: 'Taro Fintech',
+    duration: '6 months',
+    impact: 'Successful payment gateway integration',
+    link: 'https://case-study-taro.com'
   }
 ];
 
@@ -184,6 +144,27 @@ export default function WorkSection() {
         </div>
 
         <div className="relative">
+          {/* Navigation Buttons */}
+          <motion.button
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+            onClick={scrollPrev}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            disabled={selectedIndex === 0}
+          >
+            <ChevronLeft className="w-6 h-6 text-gray-600" />
+          </motion.button>
+
+          <motion.button
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+            onClick={scrollNext}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            disabled={selectedIndex === filteredWork.length - 1}
+          >
+            <ChevronRight className="w-6 h-6 text-gray-600" />
+          </motion.button>
+
           <div className="overflow-hidden" ref={emblaRef}>
             <div className="flex">
               {filteredWork.map((work, index) => (
@@ -205,15 +186,15 @@ export default function WorkSection() {
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 z-20" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 z-20" />
                       
                       {/* Work Title Overlay */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-xl font-bold text-white mb-2">
+                        <h3 className="text-xl font-bold text-white mb-2 drop-shadow-lg">
                           {work.title}
                         </h3>
                         <div className="flex gap-2">
-                          <span className="px-2 py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm">
+                          <span className="px-3 py-1 text-xs rounded-full bg-white/20 text-white backdrop-blur-sm font-medium">
                             {work.category}
                           </span>
                         </div>
@@ -265,19 +246,8 @@ export default function WorkSection() {
           
           {filteredWork.length > 0 && (
             <>
-              {/* Navigation Buttons */}
+              {/* Progress Bar */}
               <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4">
-                <motion.button
-                  className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={scrollPrev}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  disabled={selectedIndex === 0}
-                >
-                  <ChevronLeft className="w-6 h-6 text-gray-600" />
-                </motion.button>
-
-                {/* Progress Bar */}
                 <div className="w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
                   <motion.div
                     className="h-full bg-primary rounded-full"
@@ -288,16 +258,6 @@ export default function WorkSection() {
                     transition={{ duration: 0.3 }}
                   />
                 </div>
-
-                <motion.button
-                  className="bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed"
-                  onClick={scrollNext}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  disabled={selectedIndex === filteredWork.length - 1}
-                >
-                  <ChevronRight className="w-6 h-6 text-gray-600" />
-                </motion.button>
               </div>
 
               {/* Slide Indicators */}
