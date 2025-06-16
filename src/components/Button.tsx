@@ -1,85 +1,54 @@
 "use client";
 
-import { useSpring, animated } from '@react-spring/web';
+import { motion } from 'framer-motion';
 import { ReactNode } from 'react';
 
 interface ButtonProps {
   children: ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  onClick?: () => void;
   type?: 'button' | 'submit' | 'reset';
+  onClick?: () => void;
   disabled?: boolean;
   className?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export default function Button({
-  children,
-  variant = 'primary',
-  size = 'md',
-  onClick,
+const Button = ({ 
+  children, 
   type = 'button',
+  onClick,
   disabled = false,
   className = '',
-}: ButtonProps) {
-  const baseClasses = 'btn';
+  variant = 'primary',
+  size = 'md'
+}: ButtonProps) => {
+  const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2';
   
-  const variantClasses = {
-    primary: 'btn-primary',
-    secondary: 'btn-secondary',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white',
+  const variantStyles = {
+    primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-primary',
+    secondary: 'bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary',
+    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary'
   };
 
-  const sizeClasses = {
-    sm: 'text-sm px-3 py-1.5',
-    md: 'text-base px-4 py-2',
-    lg: 'text-lg px-6 py-3',
-  };
-
-  const disabledClasses = disabled ? 'opacity-50 cursor-not-allowed' : '';
-
-  const [spring, api] = useSpring(() => ({
-    scale: 1,
-    config: { tension: 300, friction: 10 }
-  }));
-
-  const handleMouseEnter = () => {
-    if (!disabled) {
-      api.start({ scale: 1.05 });
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (!disabled) {
-      api.start({ scale: 1 });
-    }
-  };
-
-  const handleMouseDown = () => {
-    if (!disabled) {
-      api.start({ scale: 0.95 });
-    }
-  };
-
-  const handleMouseUp = () => {
-    if (!disabled) {
-      api.start({ scale: 1.05 });
-    }
+  const sizeStyles = {
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg'
   };
 
   return (
-    <animated.button
+    <motion.button
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${baseClasses} ${variantClasses[variant]} ${sizeClasses[size]} ${disabledClasses} ${className}`}
-      style={spring}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onMouseDown={handleMouseDown}
-      onMouseUp={handleMouseUp}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 400, damping: 10 }}
     >
       {children}
-    </animated.button>
+    </motion.button>
   );
-} 
+};
+
+export default Button; 

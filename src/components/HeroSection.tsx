@@ -13,21 +13,17 @@ export default function HeroSection() {
         {/* Text Content */}
         <div className="flex-1 text-center lg:text-left">
           <AnimatedText
-            lines={[
-              "An affordable way to launch your product idea",
-              "Bringing your app, website or SaaS to life",
-              "Solving UX problems to drive increased revenue",
-            ]}
+            text="An affordable way to launch your product idea"
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-8 leading-tight"
           />
-          <p className="text-text-light text-lg md:text-xl mb-8 max-w-2xl mx-auto lg:mx-0">
-            I help businesses and startups create beautiful, functional digital products that users love.
+          <p className="text-gray-600 mb-8">
+            I&apos;m a passionate full-stack developer with expertise in building modern web applications.
           </p>
           <a
             href="#contact"
             className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-8 py-3 rounded-full transition-all duration-300 text-lg shadow-lg hover:shadow-xl hover:shadow-primary/20 inline-block"
           >
-            Let's Work Together
+            Let&apos;s Work Together
           </a>
         </div>
 

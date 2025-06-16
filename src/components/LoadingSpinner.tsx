@@ -1,28 +1,15 @@
-import { useSpring, animated } from '@react-spring/web';
+import { motion } from 'framer-motion';
 
-interface LoadingSpinnerProps {
-  size?: 'sm' | 'md' | 'lg';
-}
-
-export default function LoadingSpinner({ size = 'md' }: LoadingSpinnerProps) {
-  const sizeClasses = {
-    sm: 'w-4 h-4',
-    md: 'w-8 h-8',
-    lg: 'w-12 h-12',
-  };
-
-  const { rotate } = useSpring({
-    from: { rotate: 0 },
-    to: { rotate: 360 },
-    loop: true,
-    config: { duration: 1000 },
-  });
-
+const LoadingSpinner = () => {
   return (
-    <div className="flex justify-center items-center">
-      <div
-        className={`${sizeClasses[size]} border-4 border-primary border-t-transparent rounded-full animate-spin`}
+    <div className="fixed inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm z-50">
+      <motion.div
+        className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full"
+        animate={{ rotate: 360 }}
+        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
       />
     </div>
   );
-} 
+};
+
+export default LoadingSpinner; 

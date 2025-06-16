@@ -84,7 +84,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('contact')}
                 className="bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-6 py-2 rounded-full transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:shadow-primary/20"
               >
-                Let's Discuss Project
+                Let&apos;s Discuss Project
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 15 }}
@@ -144,7 +144,7 @@ const Navbar = () => {
                 onClick={() => scrollToSection('contact')}
                 className="flex-1 bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 text-sm shadow-lg hover:shadow-xl hover:shadow-primary/20"
               >
-                Let's Discuss Project
+                Let&apos;s Discuss Project
               </motion.button>
               <motion.button
                 whileHover={{ scale: 1.1, rotate: 15 }}

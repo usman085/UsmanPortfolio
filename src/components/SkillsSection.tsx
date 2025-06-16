@@ -31,19 +31,6 @@ const itemVariants = {
   },
 };
 
-const skillItemVariants = {
-  hidden: { opacity: 0, x: -20 },
-  visible: { 
-    opacity: 1, 
-    x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 300,
-      damping: 20,
-    }
-  },
-};
-
 export default function SkillsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { 
@@ -87,7 +74,7 @@ export default function SkillsSection() {
           animate={isInView ? "visible" : "hidden"}
           className="flex flex-wrap justify-center gap-6"
         >
-          {skillsData.map((category, index) => (
+          {skillsData.map((category) => (
             <motion.div
               key={category.category}
               variants={itemVariants}
@@ -111,32 +98,14 @@ export default function SkillsSection() {
                 {category.category}
               </h3>
               <div className="space-y-4 relative">
-                {category.skills.map((skill, skillIndex) => (
+                {category.skills.map((skill) => (
                   <motion.div
                     key={skill.name}
-                    variants={skillItemVariants}
-                    className="flex items-center space-x-3 group"
-                    whileHover={{ 
-                      scale: 1.05, 
-                      x: 5,
-                      transition: {
-                        type: "spring",
-                        stiffness: 400,
-                        damping: 20
-                      }
-                    }}
+                    className="flex items-center gap-2"
+                    whileHover={{ scale: 1.05 }}
                   >
-                    <motion.div
-                      whileHover={{ 
-                        rotate: 360,
-                        transition: { duration: 0.5 }
-                      }}
-                    >
-                      <skill.icon className="text-2xl text-neon" />
-                    </motion.div>
-                    <span className="text-text group-hover:text-primary transition-colors duration-300">
-                      {skill.name}
-                    </span>
+                    <skill.icon className="w-6 h-6 text-primary" />
+                    <span className="text-sm font-medium">{skill.name}</span>
                   </motion.div>
                 ))}
               </div>

@@ -1,4 +1,4 @@
-import { FaReact, FaNodeJs, FaDocker, FaLaravel, FaVuejs, FaDatabase, FaAws, FaPhp, FaWordpress } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaDocker, FaLaravel, FaVuejs, FaAws, FaPhp, FaWordpress } from 'react-icons/fa';
 import { SiNextdotjs, SiMongodb, SiPostgresql, SiMysql, SiFirebase, SiSupabase, SiTypescript, SiTailwindcss, SiRedux, SiMaterialdesign, SiBootstrap, SiJquery, SiSocketdotio, SiPusher, SiCheckio } from 'react-icons/si';
 
 export const skillsData = [

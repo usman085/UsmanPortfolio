@@ -51,9 +51,9 @@ export default function ContactSection() {
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
           <div className="animate-slide-in-left">
-            <h3 className="heading-3 mb-4">Let's Connect</h3>
-            <p className="paragraph mb-8">
-              I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
+            <h3 className="heading-3 mb-4">Let&apos;s Connect</h3>
+            <p className="text-gray-600 mb-8">
+              I&apos;m currently available for freelance work or full-time positions. If you&apos;re interested in working together, please don&apos;t hesitate to reach out.
             </p>
 
             <div className="space-y-4">
@@ -86,7 +86,7 @@ export default function ContactSection() {
           >
             {isSuccess && (
               <div className="bg-green-500/10 text-green-500 p-4 rounded-lg animate-fade-in">
-                Message sent successfully! I'll get back to you soon.
+                Message sent successfully! I&apos;ll get back to you soon.
               </div>
             )}
 

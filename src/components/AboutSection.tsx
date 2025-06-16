@@ -1,6 +1,6 @@
-import { FaReact, FaNodeJs, FaLaravel, FaVuejs, FaDocker, FaPhp, FaGitAlt } from 'react-icons/fa';
-import { SiTypescript, SiNextdotjs, SiTailwindcss, SiMongodb, SiPostgresql, SiMysql, SiJest, SiRedux, SiAmazon } from 'react-icons/si';
 import { motion } from 'framer-motion';
+import { SiTypescript, SiNextdotjs, SiMongodb, SiPostgresql, SiMysql, SiRedux, SiAmazon } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaLaravel, FaVuejs, FaDocker, FaPhp, FaGitAlt } from 'react-icons/fa';
 
 const skills = [
   { name: 'React', icon: FaReact, color: '#61DAFB' },
@@ -96,7 +96,7 @@ export default function AboutSection() {
                 viewport={viewportConfig}
                 className="grid grid-cols-2 gap-6"
               >
-                {skills.map((skill, index) => (
+                {skills.map((skill) => (
                   <motion.div
                     key={skill.name}
                     variants={itemVariants}
