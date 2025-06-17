@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { skillsData } from '../utils/data';
 import { useRef } from 'react';
+import { FaAws } from 'react-icons/fa';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -104,7 +105,13 @@ export default function SkillsSection() {
                     className="flex items-center gap-2"
                     whileHover={{ scale: 1.05 }}
                   >
-                    <skill.icon className="w-6 h-6 text-primary" />
+                    {skill.name === 'AWS' ? (
+                      <div className="w-6 h-6 flex items-center justify-center">
+                        <FaAws className="w-6 h-6" style={{ color: '#F90' }} />
+                      </div>
+                    ) : (
+                      <skill.icon className="w-6 h-6 text-primary" />
+                    )}
                     <span className="text-sm font-medium">{skill.name}</span>
                   </motion.div>
                 ))}

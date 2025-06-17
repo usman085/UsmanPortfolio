@@ -14,7 +14,7 @@ const skills = [
   { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
   { name: 'MySQL', icon: SiMysql, color: '#4479A1' },
   { name: 'Docker', icon: FaDocker, color: '#2496ED' },
-  { name: 'AWS', icon: SiAmazon, color: '#232F3E' },
+  { name: 'AWS', icon: SiAmazon, color: '#FF9900' },
   { name: 'Redux', icon: SiRedux, color: '#764ABC' },
   { name: 'Git', icon: FaGitAlt, color: '#F05032' },
 ];
