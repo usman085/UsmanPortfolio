@@ -13,29 +13,29 @@
 
 @layer base {
   :root {
-    /* Light Theme */
-    --background: 220 33% 98%;
+    /* Light Theme - Professional Business Colors */
+    --background: 0 0% 96%;
     --foreground: 222.2 84% 4.9%;
-    --primary: 262 83% 58%;
-    --primary-dark: 262 83% 48%;
-    --secondary: 316 70% 50%;
+    --primary: 221 83% 53%;
+    --primary-dark: 221 83% 43%;
+    --secondary: 199 89% 48%;
     --text: 222.2 84% 4.9%;
     --text-light: 215 20% 40%;
-    --card-bg: 220 33% 99%;
-    --border: 214.3 31.8% 91.4%;
+    --card-bg: 0 0% 100%;
+    --border: 0 0% 90%;
   }
 
   .dark {
-    /* Dark Theme */
-    --background: 230 25% 18%;
+    /* Dark Theme - Professional Business Colors */
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
-    --primary: 262 83% 58%;
-    --primary-dark: 262 83% 48%;
-    --secondary: 316 70% 50%;
+    --primary: 221 83% 53%;
+    --primary-dark: 221 83% 43%;
+    --secondary: 199 89% 48%;
     --text: 210 40% 98%;
     --text-light: 215 20% 65%;
-    --card-bg: 230 25% 22%;
-    --border: 230 25% 30%;
+    --card-bg: 222 47% 15%;
+    --border: 222 47% 25%;
   }
 
   html {
@@ -45,11 +45,11 @@
   body {
     @apply bg-background text-text antialiased;
     background-image: 
-      radial-gradient(circle at 100% 0%, rgba(var(--primary), 0.12) 0%, transparent 50%),
-      radial-gradient(circle at 0% 100%, rgba(var(--secondary), 0.12) 0%, transparent 50%),
+      radial-gradient(circle at 100% 0%, rgba(var(--primary), 0.01) 0%, transparent 50%),
+      radial-gradient(circle at 0% 100%, rgba(var(--secondary), 0.01) 0%, transparent 50%),
       linear-gradient(to bottom right, 
-        rgba(var(--primary), 0.08),
-        rgba(var(--secondary), 0.08)
+        rgba(var(--primary), 0.005),
+        rgba(var(--secondary), 0.005)
       );
     background-attachment: fixed;
   }
@@ -66,11 +66,11 @@
 
   .section::before {
     content: '';
-    @apply absolute inset-0 opacity-10;
+    @apply absolute inset-0 opacity-5;
     background: linear-gradient(45deg, 
-      rgba(var(--primary), 0.2) 0%,
-      rgba(var(--secondary), 0.2) 50%,
-      rgba(var(--primary), 0.2) 100%
+      rgba(var(--primary), 0.1) 0%,
+      rgba(var(--secondary), 0.1) 50%,
+      rgba(var(--primary), 0.1) 100%
     );
     filter: blur(50px);
     z-index: -1;
@@ -230,18 +230,29 @@
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-track {
-  @apply bg-background;
+  background: #ffffff;
+  border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb {
-  @apply bg-gradient-to-b from-primary to-secondary rounded-full opacity-50;
+  background: #0EB55F;
+  border-radius: 5px;
+  border: 2px solid #ffffff;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  @apply opacity-100;
+  background: #0EB55F;
+  opacity: 0.8;
+}
+
+/* For Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #0EB55F #ffffff;
 }
 
 /* Selection */

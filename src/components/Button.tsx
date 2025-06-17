@@ -25,9 +25,9 @@ const Button = ({
   const baseStyles = 'inline-flex items-center justify-center font-medium transition-colors duration-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2';
   
   const variantStyles = {
-    primary: 'bg-primary text-white hover:bg-primary-dark focus:ring-primary',
-    secondary: 'bg-secondary text-white hover:bg-secondary-dark focus:ring-secondary',
-    outline: 'border-2 border-primary text-primary hover:bg-primary hover:text-white focus:ring-primary'
+    primary: 'bg-[#0EB55F] text-white hover:bg-[#0EB55F]/90 focus:ring-[#0EB55F]',
+    secondary: 'bg-white text-[#0EB55F] hover:bg-[#0EB55F]/10 border border-[#0EB55F]/20 focus:ring-[#0EB55F]',
+    outline: 'border-2 border-[#0EB55F] text-[#0EB55F] hover:bg-[#0EB55F] hover:text-white focus:ring-[#0EB55F]'
   };
 
   const sizeStyles = {

@@ -50,26 +50,26 @@ export default function AboutSection() {
   return (
     <motion.section 
       id="about" 
-      className="section bg-gradient-to-br from-background via-background/95 to-primary/10 rounded-xl my-8"
+      className="section bg-white rounded-xl my-4"
       initial="hidden"
       whileInView="visible"
       viewport={viewportConfig}
       variants={containerVariants}
     >
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 py-12">
         {/* Header Section */}
         <motion.div 
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={viewportConfig}
           transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-primary to-primary-dark bg-clip-text text-transparent">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-[#0EB55F]">
             About Me
           </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
-            <p className="text-lg text-text-light leading-relaxed">
+          <div className="max-w-3xl mx-auto space-y-4">
+            <p className="text-lg text-[#1E1E1E] leading-relaxed">
               I am a Senior Full Stack Developer with extensive experience in designing and developing dynamic web applications. 
               With a strong foundation in both frontend and backend technologies, I specialize in creating scalable, 
               high-performance solutions that meet complex business requirements.
@@ -78,23 +78,23 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Skills Section - Takes 4 columns */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportConfig}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-4"
+            className="lg:col-span-4 h-full"
           >
-            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-primary/10">
-              <h3 className="text-2xl font-bold mb-8 text-primary">Core Competencies</h3>
+            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-[#0EB55F]/10 h-full flex flex-col">
+              <h3 className="text-2xl font-bold mb-6 text-[#0EB55F]">Core Competencies</h3>
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="grid grid-cols-2 gap-6"
+                className="grid grid-cols-2 gap-4 flex-grow"
               >
                 {skills.map((skill) => (
                   <motion.div
@@ -102,16 +102,16 @@ export default function AboutSection() {
                     variants={itemVariants}
                     whileHover={{ 
                       scale: 1.05,
-                      boxShadow: "0 0 20px rgba(0,0,0,0.2)",
+                      boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
                       transition: { duration: 0.2 }
                     }}
-                    className="flex flex-col items-center p-4 bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-primary/20 transition-all duration-300"
+                    className="flex flex-col items-center p-3 bg-white/50 backdrop-blur-sm rounded-xl shadow-lg hover:shadow-[#0EB55F]/20 transition-all duration-300"
                   >
                     <skill.icon
-                      className="text-4xl mb-3 transform hover:rotate-12 transition-transform duration-300"
+                      className="text-3xl mb-2 transform hover:rotate-12 transition-transform duration-300"
                       style={{ color: skill.color }}
                     />
-                    <span className="text-sm font-medium text-text-light">{skill.name}</span>
+                    <span className="text-sm font-medium text-[#1E1E1E]">{skill.name}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -124,16 +124,16 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={viewportConfig}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-8"
+            className="lg:col-span-8 h-full"
           >
-            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-8 shadow-xl border border-primary/10">
-              <h3 className="text-2xl font-bold mb-8 text-primary">Professional Experience</h3>
+            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-primary/10 h-full flex flex-col">
+              <h3 className="text-2xl font-bold mb-6 text-[#0EB55F]">Professional Experience</h3>
               <motion.div 
                 variants={containerVariants}
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="space-y-6"
+                className="space-y-4 flex-grow"
               >
                 {/* Byteimpulse CTO */}
                 <motion.div 
@@ -142,11 +142,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Chief Technology Officer</h4>
-                      <p className="text-text-light">Byteimpulse</p>
-                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · Hybrid</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Chief Technology Officer</h4>
+                      <p className="text-[#1E1E1E]">Byteimpulse</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Lahore, Punjab, Pakistan · Hybrid</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2024 - Present</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">January 2024 - Present</span>
                   </div>
                 </motion.div>
 
@@ -157,11 +157,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Lead Software Engineer</h4>
-                      <p className="text-text-light">Byteimpulse</p>
-                      <p className="text-sm text-text-light mt-1">Remote</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Lead Software Engineer</h4>
+                      <p className="text-[#1E1E1E]">Byteimpulse</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Remote</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">July 2023 - January 2024</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">July 2023 - January 2024</span>
                   </div>
                 </motion.div>
 
@@ -172,11 +172,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Senior Software Engineer</h4>
-                      <p className="text-text-light">Taro Technologies</p>
-                      <p className="text-sm text-text-light mt-1">Pakistan · On-site</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Senior Software Engineer</h4>
+                      <p className="text-[#1E1E1E]">Taro Technologies</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Pakistan · On-site</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">April 2022 - March 2024</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">April 2022 - March 2024</span>
                   </div>
                 </motion.div>
 
@@ -187,11 +187,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Laravel/Vue.js/MERN Stack Developer</h4>
-                      <p className="text-text-light">Geeklone Technology</p>
-                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Laravel/Vue.js/MERN Stack Developer</h4>
+                      <p className="text-[#1E1E1E]">Geeklone Technology</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Lahore, Punjab, Pakistan · On-site</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2021 - April 2022</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">January 2021 - April 2022</span>
                   </div>
                 </motion.div>
 
@@ -202,11 +202,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Laravel Developer</h4>
-                      <p className="text-text-light">Geek Tech Sol</p>
-                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Laravel Developer</h4>
+                      <p className="text-[#1E1E1E]">Geek Tech Sol</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Lahore, Punjab, Pakistan · On-site</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">January 2020 - December 2020</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">January 2020 - December 2020</span>
                   </div>
                 </motion.div>
 
@@ -217,11 +217,11 @@ export default function AboutSection() {
                 >
                   <div className="flex justify-between items-center">
                     <div>
-                      <h4 className="text-xl font-bold text-primary mb-1">Web Developer</h4>
-                      <p className="text-text-light">Tektiks Innovative Network Pvt. Ltd.</p>
-                      <p className="text-sm text-text-light mt-1">Lahore, Punjab, Pakistan · On-site</p>
+                      <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Web Developer</h4>
+                      <p className="text-[#1E1E1E]">Tektiks Innovative Network Pvt. Ltd.</p>
+                      <p className="text-sm text-[#1E1E1E]/80 mt-1">Lahore, Punjab, Pakistan · On-site</p>
                     </div>
-                    <span className="text-sm text-text-light bg-primary/10 px-4 py-2 rounded-full">September 2019 - December 2019</span>
+                    <span className="text-sm text-[#1E1E1E] bg-[#0EB55F]/10 px-4 py-2 rounded-full">September 2019 - December 2019</span>
                   </div>
                 </motion.div>
               </motion.div>

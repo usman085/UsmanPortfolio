@@ -30,16 +30,16 @@ export default function LoadingWrapper({ children }: LoadingWrapperProps) {
       <AnimatePresence mode="wait">
         {isLoading && (
           <motion.div
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-background"
+            className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="relative w-24 h-24">
+            <div className="relative w-32 h-32">
               {/* Animated circles */}
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-primary"
+                className="absolute inset-0 rounded-full border-4 border-[#0EB55F]"
                 animate={{
                   scale: [1, 1.2, 1],
                   opacity: [1, 0.5, 1],
@@ -51,7 +51,7 @@ export default function LoadingWrapper({ children }: LoadingWrapperProps) {
                 }}
               />
               <motion.div
-                className="absolute inset-0 rounded-full border-4 border-secondary"
+                className="absolute inset-0 rounded-full border-4 border-[#0EB55F]/50"
                 animate={{
                   scale: [1.2, 1, 1.2],
                   opacity: [0.5, 1, 0.5],
@@ -64,7 +64,7 @@ export default function LoadingWrapper({ children }: LoadingWrapperProps) {
               />
               {/* Loading text */}
               <motion.div
-                className="absolute inset-0 flex items-center justify-center text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+                className="absolute inset-0 flex items-center justify-center text-xl font-bold text-[#0EB55F]"
                 animate={{
                   opacity: [0.5, 1, 0.5],
                 }}

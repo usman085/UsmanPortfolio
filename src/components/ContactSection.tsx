@@ -43,16 +43,17 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="section bg-background">
+    <section id="contact" className="section bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       <div className="container">
-        <h2 className="heading-2 text-center mb-12 animate-fade-in">
+        <h2 className="heading-2 text-center mb-12 animate-fade-in text-[#0EB55F]">
           Get In Touch
         </h2>
 
         <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12">
           <div className="animate-slide-in-left">
-            <h3 className="heading-3 mb-4">Let&apos;s Connect</h3>
-            <p className="text-gray-600 mb-8">
+            <h3 className="heading-3 mb-4 text-[#0EB55F]">Let&apos;s Connect</h3>
+            <p className="text-[#1E1E1E] mb-8">
               I&apos;m currently available for freelance work or full-time positions. If you&apos;re interested in working together, please don&apos;t hesitate to reach out.
             </p>
 
@@ -70,7 +71,7 @@ export default function ContactSection() {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center space-x-3 text-text hover:text-primary transition-all hover:translate-x-1"
+                    className="flex items-center space-x-3 text-[#1E1E1E] hover:text-[#0EB55F] transition-all hover:translate-x-1"
                   >
                     <Icon className="text-xl" />
                     <span>{link.name}</span>
@@ -82,23 +83,23 @@ export default function ContactSection() {
 
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="space-y-6 animate-slide-in-right card"
+            className="space-y-6 animate-slide-in-right bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-[#0EB55F]/10"
           >
             {isSuccess && (
-              <div className="bg-green-500/10 text-green-500 p-4 rounded-lg animate-fade-in">
+              <div className="bg-[#0EB55F]/10 text-[#0EB55F] p-4 rounded-lg animate-fade-in">
                 Message sent successfully! I&apos;ll get back to you soon.
               </div>
             )}
 
             <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-2">
+              <label htmlFor="name" className="block text-sm font-medium mb-2 text-[#1E1E1E]">
                 Name
               </label>
               <input
                 type="text"
                 id="name"
                 {...register('name')}
-                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-[#0EB55F]/20 focus:outline-none focus:border-[#0EB55F] transition-transform focus:scale-[1.02]"
                 disabled={isSubmitting}
               />
               {errors.name && (
@@ -107,14 +108,14 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-2">
+              <label htmlFor="email" className="block text-sm font-medium mb-2 text-[#1E1E1E]">
                 Email
               </label>
               <input
                 type="email"
                 id="email"
                 {...register('email')}
-                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-[#0EB55F]/20 focus:outline-none focus:border-[#0EB55F] transition-transform focus:scale-[1.02]"
                 disabled={isSubmitting}
               />
               {errors.email && (
@@ -123,14 +124,14 @@ export default function ContactSection() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-sm font-medium mb-2">
+              <label htmlFor="message" className="block text-sm font-medium mb-2 text-[#1E1E1E]">
                 Message
               </label>
               <textarea
                 id="message"
                 rows={4}
                 {...register('message')}
-                className="w-full px-4 py-2 rounded-lg bg-card-bg border border-border focus:outline-none focus:border-primary transition-transform focus:scale-[1.02]"
+                className="w-full px-4 py-2 rounded-lg bg-white border border-[#0EB55F]/20 focus:outline-none focus:border-[#0EB55F] transition-transform focus:scale-[1.02]"
                 disabled={isSubmitting}
               />
               {errors.message && (
@@ -141,7 +142,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="btn btn-primary w-full py-3 font-semibold shadow-lg hover:shadow-neon transition-all hover:scale-105 active:scale-95 disabled:opacity-50 relative"
+              className="w-full py-3 font-semibold bg-[#0EB55F] text-white rounded-lg shadow-lg hover:shadow-[#0EB55F]/20 transition-all hover:scale-105 active:scale-95 disabled:opacity-50 relative"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center">

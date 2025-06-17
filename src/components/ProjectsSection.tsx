@@ -106,7 +106,7 @@ export default function WorkSection() {
   }, [emblaApi]);
 
   return (
-    <section id="work" className="section bg-gradient-to-b from-background to-background/95 relative overflow-hidden">
+    <section id="projects" className="section bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern opacity-5" />
       <div className="container relative">
         <motion.div 
@@ -116,10 +116,10 @@ export default function WorkSection() {
           viewport={{ once: true }}
           variants={fadeInUp}
         >
-          <h2 className="heading-2 mb-4 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
+          <h2 className="heading-2 mb-4 text-[#0EB55F]">
             Selected Work
           </h2>
-          <p className="paragraph max-w-3xl mx-auto text-gray-600">
+          <p className="paragraph max-w-3xl mx-auto text-[#0EB55F]">
             A collection of my recent work showcasing expertise in various domains
             and technologies.
           </p>
@@ -132,8 +132,8 @@ export default function WorkSection() {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 shadow-sm ${
                 selectedCategory === category
-                  ? 'bg-gradient-to-r from-primary to-primary/80 text-white shadow-primary/20'
-                  : 'bg-white text-gray-600 hover:bg-gray-50 shadow-gray-100'
+                  ? 'bg-[#0EB55F] text-white shadow-[#0EB55F]/20'
+                  : 'bg-white text-[#0EB55F] hover:bg-[#0EB55F]/10 shadow-[#0EB55F]/10'
               }`}
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.95 }}
@@ -146,23 +146,23 @@ export default function WorkSection() {
         <div className="relative">
           {/* Navigation Buttons */}
           <motion.button
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-[#0EB55F]/10 transition-all duration-300 border border-[#0EB55F]/20 disabled:opacity-50 disabled:cursor-not-allowed z-10"
             onClick={scrollPrev}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             disabled={selectedIndex === 0}
           >
-            <ChevronLeft className="w-6 h-6 text-gray-600" />
+            <ChevronLeft className="w-6 h-6 text-[#0EB55F]" />
           </motion.button>
 
           <motion.button
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-gray-50 transition-all duration-300 border border-gray-100 disabled:opacity-50 disabled:cursor-not-allowed z-10"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 bg-white p-3 rounded-full shadow-lg hover:bg-[#0EB55F]/10 transition-all duration-300 border border-[#0EB55F]/20 disabled:opacity-50 disabled:cursor-not-allowed z-10"
             onClick={scrollNext}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             disabled={selectedIndex === filteredWork.length - 1}
           >
-            <ChevronRight className="w-6 h-6 text-gray-600" />
+            <ChevronRight className="w-6 h-6 text-[#0EB55F]" />
           </motion.button>
 
           <div className="overflow-hidden" ref={emblaRef}>
@@ -176,17 +176,17 @@ export default function WorkSection() {
                   animate="visible"
                   variants={cardVariants}
                 >
-                  <div className="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl h-full flex flex-col">
+                  <div className="group relative bg-white rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl h-full flex flex-col border border-[#0EB55F]/10">
                     {/* Work Image */}
                     <div className="relative h-48 overflow-hidden flex-shrink-0">
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#0EB55F]/20 to-transparent z-10" />
                       <Image
                         src={work.image}
                         alt={work.title}
                         fill
                         className="object-cover transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 z-20" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0EB55F]/80 via-[#0EB55F]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 z-20" />
                       
                       {/* Work Title Overlay */}
                       <div className="absolute bottom-0 left-0 right-0 p-6 z-30 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
@@ -203,36 +203,36 @@ export default function WorkSection() {
 
                     {/* Card Content */}
                     <div className="p-6 flex flex-col flex-grow">
-                      <p className="text-gray-600 text-sm mb-6 line-clamp-2">
+                      <p className="text-[#0EB55F] text-sm mb-6 line-clamp-2">
                         {work.description}
                       </p>
 
                       {/* Work Details */}
                       <div className="mb-6 flex-grow space-y-3">
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">Client</span>
-                          <span className="font-medium text-gray-700">{work.client}</span>
+                          <span className="text-[#0EB55F]/60">Client</span>
+                          <span className="font-medium text-[#0EB55F]">{work.client}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">Duration</span>
-                          <span className="font-medium text-gray-700">{work.duration}</span>
+                          <span className="text-[#0EB55F]/60">Duration</span>
+                          <span className="font-medium text-[#0EB55F]">{work.duration}</span>
                         </div>
                         <div className="flex justify-between text-sm">
-                          <span className="text-gray-500">Impact</span>
-                          <span className="font-medium text-primary">{work.impact}</span>
+                          <span className="text-[#0EB55F]/60">Impact</span>
+                          <span className="font-medium text-[#0EB55F]">{work.impact}</span>
                         </div>
                       </div>
 
                       {/* Action Button */}
                       <Button
-                        variant="primary"
+                        variant="secondary"
                         size="sm"
                         onClick={() => window.open(work.link, '_blank')}
-                        className="group h-10 w-full bg-primary hover:bg-primary/90 transition-colors duration-300"
+                        className="group h-10 w-full"
                       >
                         <div className="flex items-center justify-center">
-                          <FaExternalLinkAlt className="w-4 h-4 mr-2 transition-transform group-hover:scale-110" />
-                          <span className="text-sm font-medium text-white">
+                          <FaExternalLinkAlt className="w-3.5 h-3.5 mr-2 transition-transform group-hover:translate-x-0.5" />
+                          <span className="text-sm font-medium">
                             View Case Study
                           </span>
                         </div>
@@ -248,9 +248,9 @@ export default function WorkSection() {
             <>
               {/* Progress Bar */}
               <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 flex items-center gap-4">
-                <div className="w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
+                <div className="w-32 h-1 bg-[#0EB55F]/10 rounded-full overflow-hidden">
                   <motion.div
-                    className="h-full bg-primary rounded-full"
+                    className="h-full bg-[#0EB55F] rounded-full"
                     initial={{ width: 0 }}
                     animate={{ 
                       width: `${((selectedIndex + 1) / filteredWork.length) * 100}%` 
@@ -267,8 +267,8 @@ export default function WorkSection() {
                     key={index}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === selectedIndex 
-                        ? 'bg-primary w-6' 
-                        : 'bg-gray-200 hover:bg-gray-300'
+                        ? 'bg-[#0EB55F] w-6' 
+                        : 'bg-[#0EB55F]/20 hover:bg-[#0EB55F]/30'
                     }`}
                     onClick={() => scrollTo(index)}
                     whileHover={{ scale: 1.2 }}
