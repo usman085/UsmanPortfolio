@@ -73,9 +73,7 @@ const Navbar = () => {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 h-16 transition-all duration-300 bg-white backdrop-blur-lg ${
-        isScrolled 
-          ? 'shadow-lg border-b border-[#0EB55F]/10' 
-          : ''
+        isScrolled ? 'shadow-lg border-b border-[#0EB55F]/10' : ''
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
@@ -88,7 +86,7 @@ const Navbar = () => {
             whileHover={{ scale: 1.05 }}
             onClick={() => scrollToSection('home')}
           >
-            <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#0EB55F]">
+            {/* <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#0EB55F]">
               <Image
                 src="/images/profile.png"
                 alt="Syed Usman"
@@ -97,8 +95,8 @@ const Navbar = () => {
                 className="object-cover object-top scale-125 filter-none"
                 priority
               />
-            </div>
-            <span className="text-[#0EB55F] font-bold">
+            </div> */}
+            <span className="text-[#0EB55F] font-bold text-2xl">
               Syed Usman
             </span>
           </motion.div>
@@ -129,18 +127,7 @@ const Navbar = () => {
               >
                 Let&apos;s Discuss Project
               </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1, rotate: 15 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={toggleTheme}
-                className="p-2 rounded-full bg-white/80 hover:bg-white shadow-sm hover:shadow-md transition-all duration-200 border border-[#0EB55F]/20"
-              >
-                {theme === 'light' ? (
-                  <FiMoon className="w-4 h-4 text-[#0EB55F]" />
-                ) : (
-                  <FiSun className="w-4 h-4 text-[#0EB55F]" />
-                )}
-              </motion.button>
+             
             </div>
           </nav>
 

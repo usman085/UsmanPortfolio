@@ -126,7 +126,7 @@ export default function AboutSection() {
             transition={{ duration: 0.6 }}
             className="lg:col-span-8 h-full"
           >
-            <div className="bg-background/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-primary/10 h-full flex flex-col">
+            <div className="bg-white/50 backdrop-blur-sm rounded-2xl p-6 shadow-xl border border-primary/10 h-full flex flex-col">
               <h3 className="text-2xl font-bold mb-6 text-[#0EB55F]">Professional Experience</h3>
               <motion.div 
                 variants={containerVariants}
@@ -138,9 +138,14 @@ export default function AboutSection() {
                 {/* Byteimpulse CTO */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center ">
                     <div>
                       <h4 className="text-xl font-bold text-[#0EB55F] mb-1">Chief Technology Officer</h4>
                       <p className="text-[#1E1E1E]">Byteimpulse</p>
@@ -153,7 +158,12 @@ export default function AboutSection() {
                 {/* Byteimpulse Lead */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
                   <div className="flex justify-between items-center">
                     <div>
@@ -168,7 +178,12 @@ export default function AboutSection() {
                 {/* Taro Technologies */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
                   <div className="flex justify-between items-center">
                     <div>
@@ -183,7 +198,12 @@ export default function AboutSection() {
                 {/* Geeklone Technologies */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
                   <div className="flex justify-between items-center">
                     <div>
@@ -198,7 +218,12 @@ export default function AboutSection() {
                 {/* Geek Tech Sol */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
                   <div className="flex justify-between items-center">
                     <div>
@@ -213,7 +238,12 @@ export default function AboutSection() {
                 {/* Tektiks Innovative */}
                 <motion.div 
                   variants={itemVariants}
-                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
+                  whileHover={{ 
+                    scale: 1.05,
+                    boxShadow: "0 0 20px rgba(14, 181, 95, 0.2)",
+                    transition: { duration: 0.2 }
+                  }}
+                  className="bg-card-bg/50 backdrop-blur-sm rounded-xl shadow-lg p-6 hover:bg-background/50 transition-all duration-300 border border-primary/5"
                 >
                   <div className="flex justify-between items-center">
                     <div>
